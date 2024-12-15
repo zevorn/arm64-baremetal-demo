@@ -7,7 +7,8 @@ else
 endif
 export E Q
 
-CROSS_PREFIX=aarch64-none-elf-
+QEMU_PATH=/home/zevorn/qemu/build
+CROSS_PREFIX=aarch64-none-linux-gnu-
 CFLAGS += -I include
 
 all: workload.bin
@@ -36,7 +37,7 @@ run:
 	$(E) "[TinyBox Emulator]"
 	$(Q) @make
 	$(Q) @clear
-	$(Q) qemu-system-aarch64 -M virt -cpu cortex-a57 -nographic -kernel workload.bin
+	$(Q) $(QEMU_PATH)/qemu-system-aarch64 -M virt -cpu cortex-a57 -nographic -kernel workload.bin
 
 clean:
 	$(E) "  CLEAN   "
